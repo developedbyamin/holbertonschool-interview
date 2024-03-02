@@ -37,8 +37,8 @@ def canUnlockAll(boxes):
     stack = [0]
     while stack:
         current_box = stack.pop()
-        for key in boxes[current_box]:
-            if key < n and not unlocked_boxes[key]:
+        for key in set(boxes[current_box]) - set(range(n)):
+            if not unlocked_boxes[key]:
                 unlocked_boxes[key] = True
                 keys.update(boxes[key])
                 stack.append(key)

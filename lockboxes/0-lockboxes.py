@@ -9,6 +9,18 @@ def canUnlockAll(boxes):
 
     Returns:
     - bool: True if all boxes can be opened, else False.
+
+    Example:
+    ```
+    boxes = [[1], [2], [3], [4], []]
+    print(canUnlockAll(boxes))  # Output: True
+
+    boxes = [[1, 4, 6], [2], [0, 4, 1], [5, 6, 2], [3], [4, 1], [6]]
+    print(canUnlockAll(boxes))  # Output: True
+
+    boxes = [[1, 4], [2], [0, 4, 1], [3], [], [4, 1], [5, 6]]
+    print(canUnlockAll(boxes))  # Output: False
+    ```
     """
     if not boxes or not boxes[0]:
         return False

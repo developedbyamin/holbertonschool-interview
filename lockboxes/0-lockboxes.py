@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+
+
 """
     Determine if all the boxes can be opened.
 
@@ -22,6 +24,8 @@
     print(canUnlockAll(boxes))  # Output: False
     ```
     """
+
+
 
 def canUnlockAll(boxes):
     if not boxes or not boxes[0]:

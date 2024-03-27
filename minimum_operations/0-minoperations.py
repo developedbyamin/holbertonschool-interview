@@ -8,6 +8,7 @@ Minimum number of operations to obtain the desired count of elements.
 def minOperations(n):
     if n <= 1:
         return 0
+
     def factors(num):
         res = []
         for i in range(1, int(num**0.5) + 1):

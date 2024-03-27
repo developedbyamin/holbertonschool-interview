@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 
+"""
+Minimum number of operations to obtain the desired count of elements.
+"""
 
 def minOperations(n):
     if n <= 1:
@@ -20,9 +23,3 @@ def minOperations(n):
     
     return n
     
-
-n = 4
-print("Min of operations to reach {} char: {}".format(n, minOperations(n)))
-
-n = 12
-print("Min of operations to reach {} char: {}".format(n, minOperations(n)))

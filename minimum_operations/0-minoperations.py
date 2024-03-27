@@ -5,23 +5,22 @@ Minimum number of operations to obtain the desired count of elements.
 """
 
 
+def biggest_divisor(n):
+    for i in range(int(n / 2), 0, -1):
+        if n % i == 0:
+            return i
+
+
 def minOperations(n):
-    if n <= 1:
+    if n == 2:
+        return 2
+    elif n == 1 or n == 0 or n < 0:
         return 0
-    
-    def factors(num):
-        res = []
-        for i in range(1, int(num**0.5) + 1):
-            if num % i == 0:
-                res.append(i)
-                if i != num // i:
-                    res.append(num // i)
-        return res
-
-
-    for i in factors(n)[1:]:
-        if i < n:
-            return i + minOperations(n // i)
-    
-    return n
-    
+    elif n % 2 == 0:
+        return minOperations(n / 2) + 2
+    else:
+        bd = biggest_divisor(n)
+        if bd == 1:
+            return n
+        else:
+            return minOperations(bd) + int(n / bd)

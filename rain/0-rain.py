@@ -3,6 +3,7 @@
 Rainwater retention calculation module.
 """
 
+
 def rain(walls):
     """
     Calculate the total amount of rainwater retained given wall heights.

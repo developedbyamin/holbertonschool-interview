@@ -3,12 +3,13 @@
 Rainwater retention calculation module.
 """
 
-
 def rain(walls):
     """
     Calculate the total amount of rainwater retained given wall heights.
+
     Args:
-    walls (list): List of non-negativeintegersrepresentingtheheightsofwalls.
+    walls (list): List of non-negative integers representing the heights of walls.
+
     Returns:
     int: Total amount of rainwater retained.
     """
@@ -32,8 +33,6 @@ def rain(walls):
 
     # Calculate water retained
     for i in range(n):
-        water_retained += max(
-            0, min(left_max[i], right_max[i]) - walls[i]
-        )
+        water_retained += max(0, min(left_max[i], right_max[i]) - walls[i])
 
     return water_retained

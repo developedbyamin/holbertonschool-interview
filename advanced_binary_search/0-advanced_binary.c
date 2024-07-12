@@ -64,3 +64,4 @@ int advanced_binary(int *array, size_t size, int value)
 	index = (!array || size < 1) ? -1 : find_index(array, 0, size, value);
 	return (index);
 }
+

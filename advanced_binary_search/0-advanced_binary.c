@@ -1,63 +1,66 @@
 #include "search_algos.h"
 
 /**
- * find_index - Finds the index of the first occurrence of a value in an array.
- * @array:    (int*)  Sorted array of integers.
- * @start:    (size_t) Index indicating the start of the sub-array.
- * @end:      (size_t) Index indicating the end of the sub-array.
- * @value:    (int)   Value to be found.
- * 
- * Return:    (int)   Index where the value is located or -1 if not found.
- */
-int find_index(int *array, size_t start, size_t end, int value)
+* find_index - finds the index of the 1st occurrence of a value in an array
+*@an_array:    (int*)  sorted array of integers
+*@start:       (int)   index indicating the start of the sub-array
+*@end:         (int)   index indicating the end of the sub-array
+*@val:         (int)   value to be finded
+*Return:		pos:	(int)   index where value is located or -1 otherwise
+*/
+
+int find_index(int *an_array, size_t start, size_t end, int val)
 {
-    size_t mid;
+	size_t i, index, pos, len;
 
-    if (start >= end)
-        return (-1);
+	if (start == end)
+		return (-1);
 
-    printf("Searching in array: ");
-    for (size_t i = start; i < end; i++)
-    {
-        printf("%d", array[i]);
-        if (i < end - 1)
-            printf(", ");
-    }
-    printf("\n");
+	printf("Searching in array: ");
+	for (i = start; i < end; i++)
+	{
+		printf("%d", an_array[i]);
+		if (i < end - 1)
+			printf(", ");
+	}
+	printf("\n");
 
-    mid = (start + end) / 2;
+	pos = index = (start + end - 1) / 2;
+	len = end - start;
 
-    if (array[mid] == value)
-    {
-        // Check if it's the first occurrence
-        if (mid == start || array[mid - 1] < value)
-            return mid;
-        // Continue searching in the left half
-        return find_index(array, start, mid, value);
-    }
-    else if (array[mid] < value)
-    {
-        return find_index(array, mid + 1, end, value);
-    }
-    else
-    {
-        return find_index(array, start, mid, value);
-    }
+	if (len > 0 && (an_array[index] == val) && (an_array[index - 1] > val))
+		pos = index;
+
+	else if ((an_array[index] == val) && (an_array[index - 1] == val))
+		pos = find_index(an_array, start, index + 1, val);
+
+	else if (an_array[index] < val)
+		pos = find_index(an_array, index + 1, end, val);
+
+	else if (an_array[index] > val)
+		pos = find_index(an_array, start, index + 1, val);
+
+	else if (an_array[index] == val)
+		pos = index;
+
+	else
+		pos = -1;
+
+	return (pos);
 }
 
 /**
- * advanced_binary - Finds an item and its position in a sorted array.
- * @array:   (int*)   Array of elements.
- * @size:    (size_t) Length of the array.
- * @value:   (int)    Value to be located in the array.
- * 
- * Return:   (int)    Index position if found or -1 otherwise.
+ * advanced_binary - Finds an item and its position in an sorted array
+ * @array:  (int)       Array of elements
+ * @size:   (size_t)    Lenght of the array
+ * @value:  (int)       value to be located in the array
+  * Return:	@pos:    (int)       index position if found or -1 otherwise
  */
+
 int advanced_binary(int *array, size_t size, int value)
 {
-    if (!array || size < 1)
-        return (-1);
-    
-    return find_index(array, 0, size, value);
-}
+	int index;
 
+	index = (!array || size < 1) ? -1 : find_index(array, 0, size, value);
+	return (index);
+}

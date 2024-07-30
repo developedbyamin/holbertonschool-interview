@@ -55,12 +55,13 @@ char *operations(char *num1, char *num2, int len1, int len2)
 	char *result;
 	int i, j, carry, len_total = (len1 + len2);
 
-	result = malloc(sizeof(char) * len_total);
+	result = malloc(sizeof(char) * (len_total + 1));
 	if (!result)
 		err_message("Error");
 
 	for (i = 0; i < len_total; i++)
 		result[i] = '0';
+	result[len_total] = '\0';
 
 	for (i = len1 - 1; i >= 0; i--)
 	{
@@ -89,15 +90,21 @@ char *operations(char *num1, char *num2, int len1, int len2)
 int main(int ac, char **av)
 {
 	int len1 = 0, len2 = 0;
-	char *num1 = av[1], *num2 = av[2], *result;
+	char *num1, *num2, *result;
 
-	if (ac != 3 || _isdigit(num1) || _isdigit(num2))
+	if (ac != 3)
 		err_message("Error");
 
-	if (av[1][0] == '0' || av[2][0] == '0')
+	num1 = av[1];
+	num2 = av[2];
+
+	if (_isdigit(num1) || _isdigit(num2))
+		err_message("Error");
+
+	if (num1[0] == '0' || num2[0] == '0')
 	{
 		_puts("0");
-		exit(0);
+		return (0);
 	}
 
 	while (num1[len1])
@@ -107,11 +114,11 @@ int main(int ac, char **av)
 
 	result = operations(num1, num2, len1, len2);
 
-	if (result[0] == '0')
-		_puts(result + 1);
-	else
-		_puts(result);
+	while (*result == '0')
+		result++;
 
-	free(result);
+	_puts(result);
+
+	free(result - (len1 + len2));
 	return (0);
 }

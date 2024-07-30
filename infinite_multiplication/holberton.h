@@ -1,10 +1,13 @@
-#ifndef _HOLBERTON_H_
-#define _HOLBERTON_H_
-/* LIBRARIES */
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
+#ifndef HOLBERTON_H
+#define HOLBERTON_H
 
-/* PROTOTYPES */
+#include <stdlib.h>
+#include <unistd.h>
+
+void _puts(char *s);
+void err_message(char *s);
+int _isdigit(char *s);
+char *operations(char *num1, char *num2, int len1, int len2);
 int _putchar(char c);
-#endif /* _HOLBERTON_H_ */
+
+#endif /* HOLBERTON_H */

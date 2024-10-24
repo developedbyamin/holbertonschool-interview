@@ -24,7 +24,7 @@ def island_perimeter(grid):
     """
     error_msg = "grid must be a list of lists of ints representing an island"
     if type(grid) is not list:
-        raise TypeError(error_msg)
+        raise TypeError(error_msg)  
     for row in grid:
         if type(row) is not list:
             raise TypeError(error_msg)
